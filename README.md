@@ -27,9 +27,12 @@ to exert an influence on the lives of Americans.  The Covid-19 pandemic is a wor
 - REDFIN.com
 	- National home sales
 	- National median value of homes sold
-- Covid data source
+- World Health Organization Coronavirus (COVID-19) Dashboard
 	- New Covid-19 cases per month
 	- Covid-19 deaths per month
+### ERD
+![QuickDBD Schema](https://github.com/Kuldeep200/Covid-19/blob/main/QuickDBD-export.png)
+
 ---
 ### GitHub
 https://github.com/Kuldeep200/Covid-19
