@@ -31,7 +31,7 @@ to exert an influence on the lives of Americans.  The Covid-19 pandemic is a wor
 	- New Covid-19 cases per month
 	- Covid-19 deaths per month
 ### ERD
-![QuickDBD Schema](https://github.com/Kuldeep200/Covid-19/blob/main/QuickDBD-export.png)
+![QuickDBD Schema](https://github.com/Kuldeep200/Covid-19/blob/main/Images/QuickDBD-export.png)
 
 ---
 ### GitHub
