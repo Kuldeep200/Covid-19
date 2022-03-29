@@ -55,5 +55,8 @@ The unemployment rate represents the number of unemployed as a percentage of the
 ### GitHub
 https://github.com/Kuldeep200/Covid-19
 
-
+Check canvas for linear regression models:
+lasso
+ridge
+elastic net
 
