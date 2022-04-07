@@ -1,0 +1,135 @@
+-- Creating tables 
+
+CREATE TABLE "S_P_500" (
+    "Date" DATE   NOT NULL,
+    "S_P Close" DECIMAL NOT NULL,
+    "S_P Volume" FLOAT NOT NULL,
+    CONSTRAINT "pk_S_P_500" PRIMARY KEY (
+        "Date"
+     )
+);
+SELECT * FROM "S_P_500"
+
+ORDER BY "Date" ASC;
+DROP TABLE "S_P_500";
+
+CREATE TABLE "Houses_Market" (
+	"Date" DATE   NOT NULL,
+    "Median Sale Price" NUMERIC   NOT NULL,
+    "Homes Sold" NUMERIC   NOT NULL,
+	
+    CONSTRAINT "pk_Houses_Market" PRIMARY KEY (
+        "Date"
+     )
+);
+SELECT * FROM "Houses_Market";
+DROP TABLE "Houses_Market";
+
+CREATE TABLE "Monthly_inflation" (
+    "Date" DATE   NOT NULL,
+    "INFLATION_EXPECTATION" DECIMAL   NOT NULL,
+    CONSTRAINT "pk_Monthly_inflation" PRIMARY KEY (
+        "Date"
+     )
+);
+SELECT * FROM "Monthly_inflation";
+
+DROP TABLE "Monthly_inflation";
+
+
+CREATE TABLE "Monthly_retail_sales" (
+    "Date" DATE   NOT NULL,
+    "SALES" INT   NOT NULL,
+    CONSTRAINT "pk_Monthly_retail_sales" PRIMARY KEY (
+        "Date"
+     )
+);
+
+SELECT * FROM "Monthly_retail_sales";
+DROP TABLE "Monthly_retail_sales";
+
+CREATE TABLE "Monthly_Unemployment" (
+    "Date" DATE   NOT NULL,
+    "UNEMPLOYMENT" DECIMAL   NOT NULL,
+    CONSTRAINT "pk_Monthly_Unemployment" PRIMARY KEY (
+        "Date"
+     )
+);
+SELECT * FROM "Monthly_Unemployment";
+DROP TABLE "Monthly_Unemployment";
+
+CREATE TABLE NASDAQ (
+  	"Date" DATE NOT NULL,
+  	 "NAS Value" DECIMAL NOT NULL,
+   	"NAS Volume" varchar(255),
+     PRIMARY KEY (
+        "Date"
+     )
+);
+SELECT * FROM NASDAQ;
+DROP TABLE NASDAQ;
+
+CREATE TABLE "Covid_Cases" (
+    "Date" DATE   NOT NULL,
+    "Covid_New_Cases" int   NOT NULL,
+    "Covid_Death" int   NOT NULL,
+    CONSTRAINT "pk_Covid_Cases" PRIMARY KEY (
+        "Date"
+     )
+);
+SELECT * FROM "Covid_Cases";
+
+DROP TABLE "Covid_Cases";
+
+-- Attempt to fill missing dates with null values
+SELECT
+SP."Date",
+SP."S_P Close",
+  SP."S_P Volume",
+  HM."Median Sale Price",
+  HM."Homes Sold",
+  MI."INFLATION_EXPECTATION",
+  RS."SALES",
+  MU."UNEMPLOYMENT",
+  NAS."NAS Value",
+  NAS."NAS Volume",
+  CC."Covid_New_Cases",
+  CC."Covid_Death" 
+FROM "S_P_500" AS SP
+LEFT JOIN ("Monthly_retail_sales" AS RS ON RS."Date"= MI."Date"),
+LEFT JOIN ("Monthly_Unemployment" AS MU ON MU."Date"= RS."Date")
+LEFT JOIN (NASDAQ AS NAS ON NAS."Date"= MU."Date")
+LEFT JOIN ("Covid_Cases" AS CC ON CC."Date"= NAS."Date")
+LEFT JOIN  ("Monthly_inflation" AS MI ON HM."Date"= MI."Date")
+LEFT JOIN (SELECT "Houses_Market" ('DATE', SP."DATE")  AS HM
+			FROM "S_P_500"
+			GROUP BY "Houses_Market" ('DATE', SP."DATE")) AGG ON 'DATE'= HM
+			ORDER BY 1 ASC;
+
+		   
+
+-- Output data begins in 2020; missing previous years
+SELECT
+SP."Date",
+SP."S_P Close",
+  SP."S_P Volume",
+  HM."Median Sale Price",
+  HM."Homes Sold",
+  MI."INFLATION_EXPECTATION",
+  RS."SALES",
+  MU."UNEMPLOYMENT",
+  NAS."NAS Value",
+  NAS."NAS Volume",
+  CC."Covid_New_Cases",
+  CC."Covid_Death"
+FROM "S_P_500" AS SP
+LEFT JOIN "Houses_Market" AS HM ON SP."Date" = HM."Date"
+LEFT JOIN "Monthly_inflation" AS MI ON HM."Date"= MI."Date"
+LEFT JOIN "Monthly_retail_sales" AS RS ON RS."Date"= MI."Date"
+LEFT JOIN "Monthly_Unemployment" AS MU ON MU."Date"= RS."Date"
+LEFT JOIN NASDAQ AS NAS ON NAS."Date"= MU."Date"  
+LEFT JOIN "Covid_Cases" AS CC ON CC."Date"= NAS."Date"
+WHERE EXTRACT(YEAR FROM SP."Date") > 2016   
+ORDER BY "Date";
+
+
