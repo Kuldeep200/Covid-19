@@ -1,0 +1,111 @@
+-- Creating tables 
+
+CREATE TABLE S_P_500 (
+    Date DATE   NOT NULL,
+    SP_Close FLOAT NOT NULL,
+    SP_Volume BIGINT NOT NULL,
+   	PRIMARY KEY (
+        Date
+     )
+);
+SELECT * FROM S_P_500;
+DROP TABLE S_P_500;
+
+ORDER BY "Date" ASC;
+DROP TABLE "S_P_500";
+
+CREATE TABLE Houses_Market (
+	Date DATE   NOT NULL,
+    Median_Sale_Price varchar   NOT NULL,
+    Homes_Sold varchar   NOT NULL,
+	 PRIMARY KEY (
+        Date
+     )
+);
+SELECT * FROM Houses_Market;
+DROP TABLE Houses_Market;
+
+CREATE TABLE Monthly_inflation (
+    Date DATE   NOT NULL,
+    Inflation_Rate DECIMAL   NOT NULL,
+    PRIMARY KEY (
+        Date
+     )
+);
+SELECT * FROM Monthly_inflation;
+DROP TABLE Monthly_inflation;
+
+
+
+
+CREATE TABLE Monthly_retail_sales (
+    Date DATE   NOT NULL,
+    SALES INT   NOT NULL,
+     PRIMARY KEY (
+        Date
+     )
+);
+
+SELECT * FROM Monthly_retail_sales;
+DROP TABLE Monthly_retail_sales;
+
+CREATE TABLE Monthly_Unemployment (
+    Date DATE   NOT NULL,
+    Unemployment_Rate DECIMAL   NOT NULL,
+    PRIMARY KEY (
+        Date
+     )
+);
+SELECT * FROM Monthly_Unemployment;
+DROP TABLE Monthly_Unemployment;
+
+CREATE TABLE NASDAQ (
+  	Date DATE NOT NULL,
+  	 NAS_Close DECIMAL NOT NULL,
+   	NAS_Volume varchar(255),
+     PRIMARY KEY (
+        Date
+     )
+);
+DROP TABLE NASDAQ;
+SELECT * FROM NASDAQ;
+DROP TABLE NASDAQ;
+
+CREATE TABLE Covid_Cases (
+    Date DATE   NOT NULL,
+    New_Covid_Cases int   NOT NULL,
+    New_Covid_Deaths int   NOT NULL,
+	 PRIMARY KEY (
+        Date
+     )
+);
+SELECT * FROM Covid_Cases;
+
+DROP TABLE Covid_Cases;
+	   
+
+-- Output data begins in 2020; missing previous years
+SELECT
+SP.Date,
+SP.SP_Close,
+  SP.SP_Volume,
+  HM.Median_Sale_Price,
+  HM.Homes_Sold,
+  MI.Inflation_Rate,
+  RS.SALES,
+  MU.Unemployment_Rate,
+  NAS.NAS_Close,
+  NAS.NAS_Volume,
+  CC.New_Covid_Cases,
+  CC.New_Covid_Deaths
+FROM S_P_500 AS SP
+LEFT JOIN Houses_Market AS HM ON SP.Date = HM.Date
+LEFT JOIN Monthly_inflation AS MI ON HM.Date= MI.Date
+LEFT JOIN Monthly_retail_sales AS RS ON RS.Date= MI.Date
+LEFT JOIN Monthly_Unemployment AS MU ON MU.Date= RS.Date
+LEFT JOIN NASDAQ AS NAS ON NAS.Date= MU.Date
+LEFT JOIN Covid_Cases AS CC ON CC.Date= NAS.Date
+WHERE EXTRACT(YEAR FROM SP.Date) > 2016   
+ORDER BY Date;
+
+
