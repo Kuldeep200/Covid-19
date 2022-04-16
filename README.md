@@ -52,8 +52,12 @@ The unemployment rate represents the number of unemployed as a percentage of the
 ![QuickDBD Schema](https://github.com/Kuldeep200/Covid-19/blob/main/Images/QuickDBD-export.png)
 
 ---
-### GitHub
-https://github.com/Kuldeep200/Covid-19
+### Presentation slides
+https://docs.google.com/presentation/d/1j2Rb0Y6Q8VL9Oo-Jq1XGB1Rkk3FcLbvpb-Rgs1qZKYs/edit#slide=id.p
+
+### Tableau dashboard
+https://public.tableau.com/app/profile/andy.herron/viz/CWRUproject/Dashboard1?publish=yes
+
 
 Check canvas for linear regression models:
 lasso
