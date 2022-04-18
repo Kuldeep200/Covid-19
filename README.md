@@ -58,28 +58,28 @@ https://docs.google.com/presentation/d/1j2Rb0Y6Q8VL9Oo-Jq1XGB1Rkk3FcLbvpb-Rgs1qZ
 ### Tableau dashboard
 https://public.tableau.com/app/profile/andy.herron/viz/CWRUproject/Story1?publish=yes
 
+---
+### Evaluating the models:
+*r2 (R Squared) - value ranges from 0 to 1, higher is better*\
+*RMSE (Root Mean Squared Error) - lower is better*
 
-Evaluating the models:
-r2 (R Squared) - value ranges from 0 to 1, higher is better
-RMSE (Root Mean Squared Error) - lower is better
+Multiple linear regression\
+r2 = -7.3\
+RMSE = 2.78\
 
-Multiple linear regression
-r2 = -7.3
-RMSE = 2.78
+LASSO regression\
+r2 = -7.3\
+RMSE = 2.78\
 
-LASSO regression
-r2 = -7.3
-RMSE = 2.78
+Ridge (alpha = 1)\
+r2 = -6.3\
+RMSE = 2.61\
 
-Ridge (alpha = 1)
-r2 = -6.3
-RMSE = 2.61
+Ridge (alpha = 100)\
+r2 = -0.05\
+RMSE = 0.99\
 
-Ridge (alpha = 100)
-r2 = -0.05
-RMSE = 0.99
-
-ARIMA
-r2 = 
+ARIMA\
+r2 = \
 RMSE = 1.09
 
