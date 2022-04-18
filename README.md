@@ -65,19 +65,19 @@ https://public.tableau.com/app/profile/andy.herron/viz/CWRUproject/Story1?publis
 
 Multiple linear regression\
 r2 = -7.3\
-RMSE = 2.78\
+RMSE = 2.78
 
 LASSO regression\
 r2 = -7.3\
-RMSE = 2.78\
+RMSE = 2.78
 
 Ridge (alpha = 1)\
 r2 = -6.3\
-RMSE = 2.61\
+RMSE = 2.61
 
 Ridge (alpha = 100)\
 r2 = -0.05\
-RMSE = 0.99\
+RMSE = 0.99
 
 ARIMA\
 r2 = \
