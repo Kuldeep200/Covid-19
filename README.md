@@ -56,7 +56,7 @@ The unemployment rate represents the number of unemployed as a percentage of the
 https://docs.google.com/presentation/d/1j2Rb0Y6Q8VL9Oo-Jq1XGB1Rkk3FcLbvpb-Rgs1qZKYs/edit?usp=sharing
 
 ### Tableau dashboard
-https://public.tableau.com/app/profile/andy.herron/viz/CWRUproject/Story1?publish=yes
+https://public.tableau.com/app/profile/viasha.isler/viz/Unemployment_16503239596380/Dashboard1
 
 ---
 ### Evaluating the models:
