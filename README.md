@@ -4,7 +4,6 @@
 ### Team members
 - Andy Herron
 - Viasha Isler
-- Vanessa Perkins
 - Kuldip Puri
 
 ## What will happen to the unemployment rate post pandemic?
